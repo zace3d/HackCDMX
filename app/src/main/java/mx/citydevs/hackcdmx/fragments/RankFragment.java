@@ -94,17 +94,17 @@ public class RankFragment extends Fragment {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.fragment_rank_btn_yes:
-                    setAnswerId(1);
+                    setAnswerId(1, index);
                     break;
                 case R.id.fragment_rank_btn_no:
-                    setAnswerId(0);
+                    setAnswerId(0, index);
                     break;
             }
         }
     };
 
-    private void setAnswerId(int answerId) {
-        ((RankActivity) getActivity()).setResultQuestion("OK");
+    private void setAnswerId(int answerId, int index) {
+        ((RankActivity) getActivity()).setAnswerToQuestion(answerId);
 
         // Dialogues.Toast(getActivity(), "ANSWER: " + answerId + ", INDEX: " + index, Toast.LENGTH_SHORT);
     }

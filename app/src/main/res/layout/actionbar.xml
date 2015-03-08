@@ -7,6 +7,12 @@
     android:background="@color/colorAppGreyBgr"
     android:minHeight="?attr/actionBarSize">
 
+    <ImageView
+        android:id="@+id/actionbar_icon"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:src="@drawable/coche_patrulla"/>
+
     <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/actionbar_title"
         android:layout_width="wrap_content"

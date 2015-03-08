@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import mx.citydevs.hackcdmx.beans.Officer;
@@ -34,6 +35,8 @@ public class OfficerResultActivity extends ActionBarActivity implements View.OnC
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
         mToolbar.setTitle("");
         mToolbar.getBackground().setAlpha(255);
+        ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
+        actionbarIcon.setVisibility(View.GONE);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setText("");
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));

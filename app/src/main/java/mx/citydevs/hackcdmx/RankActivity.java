@@ -7,11 +7,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import mx.citydevs.hackcdmx.adapters.PublicationPagerAdapter;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
@@ -30,6 +33,8 @@ public class RankActivity extends ActionBarActivity {
     private int current_index = 0;
     private int COUNT = 0;
 
+    private ArrayList<Integer> listAnswers = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,8 @@ public class RankActivity extends ActionBarActivity {
         mToolbar.setTitle("");
         mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         mToolbar.getBackground().setAlpha(255);
+        ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
+        actionbarIcon.setVisibility(View.GONE);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setText("");
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
@@ -92,16 +99,16 @@ public class RankActivity extends ActionBarActivity {
         @Override public void onPageScrollStateChanged(int state) {}
     };
 
-    public void setResultQuestion(String result) {
-        if (result.equals("OK")) {
-            viewPager.setCurrentItem(++current_index, true);
+    public void setAnswerToQuestion(int answer) {
+        listAnswers.add(current_index, answer);
 
-            // Dialogues.Toast(getBaseContext(), "INDEX: " + current_index, Toast.LENGTH_SHORT);
+        viewPager.setCurrentItem(++current_index, true);
 
-            if (current_index == COUNT) {
-                PostQuestionPublicationsAsyncTask task = new PostQuestionPublicationsAsyncTask();
-                task.execute();
-            }
+        // Dialogues.Toast(getBaseContext(), "INDEX: " + current_index, Toast.LENGTH_SHORT);
+
+        if (current_index == COUNT) {
+            PostQuestionPublicationsAsyncTask task = new PostQuestionPublicationsAsyncTask();
+            task.execute();
         }
     }
 
@@ -121,7 +128,11 @@ public class RankActivity extends ActionBarActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String result = HttpConnection.GET(HttpConnection.URL + HttpConnection.RANK);
+            String url = HttpConnection.URL + String.format(Locale.getDefault(), HttpConnection.RANK,
+                    listAnswers.get(0), listAnswers.get(1), listAnswers.get(2), listAnswers.get(3), listAnswers.get(4),
+                    listAnswers.get(5));
+            Dialogues.Log(TAG_CLASS, "URL RANK: " + url, Log.ERROR);
+            String result = HttpConnection.GET(url);
             return result;
         }
 

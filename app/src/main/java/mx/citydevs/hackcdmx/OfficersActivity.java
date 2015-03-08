@@ -9,7 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,6 +45,8 @@ public class OfficersActivity extends ActionBarActivity {
         mToolbar.setTitle("");
         mToolbar.getBackground().setAlpha(255);
         mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
+        actionbarIcon.setVisibility(View.GONE);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setText("");
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
