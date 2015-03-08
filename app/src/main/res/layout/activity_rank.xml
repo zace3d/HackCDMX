@@ -4,10 +4,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actionbar"
+        layout="@layout/header"/>
+
     <mx.citydevs.hackcdmx.views.CustomViewPager
         android:id="@+id/rank_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/header"
         android:layout_above="@+id/rank_pager_indicator"/>
 
     <com.viewpagerindicator.CirclePageIndicator
@@ -15,7 +29,6 @@
         style="@style/AppTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
         android:layout_marginBottom="40dp"
         android:layout_alignParentBottom="true"
         android:padding="10dip" />

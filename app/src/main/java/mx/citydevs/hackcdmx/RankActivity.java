@@ -31,7 +31,22 @@ public class RankActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
 
+        setSupportActionBar();
         initUI();
+    }
+
+    protected void setSupportActionBar() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
+        mToolbar.setTitle("");
+        mToolbar.getBackground().setAlpha(255);
+        TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
+        actionbarTitle.setText("");
+        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setElevation(5);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initUI() {
@@ -56,6 +71,7 @@ public class RankActivity extends ActionBarActivity {
         // Viewpager indicator
         CirclePageIndicator titleIndicator = (CirclePageIndicator) findViewById(R.id.rank_pager_indicator);
         titleIndicator.setViewPager(viewPager);
+        titleIndicator.setOnPageChangeListener(null);
     }
 
     public void setResultQuestion(String result) {

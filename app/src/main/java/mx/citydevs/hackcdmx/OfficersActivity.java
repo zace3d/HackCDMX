@@ -50,11 +50,13 @@ public class OfficersActivity extends ActionBarActivity {
         mToolbar.setTitle("");
         mToolbar.getBackground().setAlpha(255);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText(getResources().getString(R.string.app_name));
+        actionbarTitle.setText("");
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setElevation(5);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initUI(ArrayList<Officer> listOfficers) {

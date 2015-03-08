@@ -14,6 +14,8 @@
         android:id="@+id/officers_et_officers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:hint="@string/officers_name_input"
         android:ems="10" />
 
     <AutoCompleteTextView

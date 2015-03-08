@@ -15,4 +15,6 @@
     <string name="getdata_loading">Obteniendo información de Oficiales</string>
 
     <string name="main_description">Consulta quién te puede infraccionar y el tipo de sanción que te deben aplicar</string>
+
+    <string name="officers_name_input">Ingresa el nombre del oficial de tránsito</string>
 </resources>

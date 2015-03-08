@@ -30,6 +30,8 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<Officer> arraylist;
     private String regex = "";
 
+    private String abcWord = "Z";
+
     public ListViewAdapter(Context context, List<Officer> data) {
         mContext = context;
         this.data = data;
@@ -40,7 +42,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     public class ViewHolder {
         CustomTextView nombre;
-        CustomTextView placa;
+        CustomTextView word;
     }
 
     @Override
@@ -65,13 +67,22 @@ public class ListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.item_officers, null);
             // Locate the TextViews in listview_item.xml
             holder.nombre = (CustomTextView) view.findViewById(R.id.item_officers_name);
+            holder.word = (CustomTextView) view.findViewById(R.id.item_officers_word);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
+
+        String nombre = data.get(position).getNombre();
+        /*if (!nombre.startsWith(abcWord)) {
+            holder.word.setText(nombre.charAt(0));
+            holder.word.setVisibility(View.VISIBLE);
+            abcWord = nombre.substring(0, 0);
+        }*/
+
         // Set the results into TextViews
-        holder.nombre.setText(data.get(position).getNombre());
-        setColor(holder.nombre, data.get(position).getNombre(), regex, Color.GREEN);
+        holder.nombre.setText(nombre);
+        setColor(holder.nombre, nombre, regex, Color.GREEN);
 
         // Listen for ListView Item Click
         view.setOnClickListener(new View.OnClickListener() {
