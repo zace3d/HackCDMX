@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="typeface">
+        <enum name="Roboto_Black" value="0" />
+        <enum name="Roboto_BlackItalic" value="1" />
+        <enum name="Roboto_Bold" value="2" />
+        <enum name="Roboto_BoldItalic" value="3" />
+        <enum name="Roboto_Italic" value="4" />
+        <enum name="Roboto_Light" value="5" />
+        <enum name="Roboto_LightItalic" value="6" />
+        <enum name="Roboto_Medium" value="7" />
+        <enum name="Roboto_MediumItalic" value="8" />
+        <enum name="Roboto_Regular" value="9" />
+        <enum name="Roboto_Thin" value="10" />
+        <enum name="Roboto_ThinItalic" value="11" />
+
+        <enum name="RobotoCondensed_Bold" value="12" />
+        <enum name="RobotoCondensed_BoldItalic" value="13" />
+        <enum name="RobotoCondensed_Italic" value="14" />
+        <enum name="RobotoCondensed_Light" value="15" />
+        <enum name="RobotoCondensed_LightItalic" value="16" />
+        <enum name="RobotoCondensed_Regular" value="17" />
+
+        <enum name="OpenSans_Bold" value="18" />
+        <enum name="OpenSans_BoldItalic" value="19" />
+        <enum name="OpenSans_ExtraBold" value="20" />
+        <enum name="OpenSans_ExtraBoldItalic" value="21" />
+        <enum name="OpenSans_Italic" value="22" />
+        <enum name="OpenSans_Light" value="23" />
+        <enum name="OpenSans_LightItalic" value="24" />
+        <enum name="OpenSans_Regular" value="25" />
+        <enum name="OpenSans_SemiBold" value="26" />
+        <enum name="OpenSans_SemiBoldItalic" value="27" />
+
+        <enum name="Vollkorn_Bold" value="28" />
+        <enum name="Vollkorn_BoldItalic" value="29" />
+        <enum name="Vollkorn_Italic" value="30" />
+        <enum name="Vollkorn_Regular" value="31" />
+    </attr>
+    
+    <declare-styleable name="CustomTextView">
+        <attr name="typeface" />
+    </declare-styleable>
+
+</resources>
