@@ -22,6 +22,7 @@ public class HttpConnection {
 	
 	public static final String URL = "http://infracciones.herokuapp.com/";
     public static final String OFFICERS = "cops.json";
+    public static final String INFRACTIONS = "concepts.json";
 
     public static final String RANK = "/cops/new?identification=1&infraccion=0&articulo=1&coincidio=0&documents=1&copy=1&latitude=19.4394835&longitude=-99.1823396&cop_id=830625";
 

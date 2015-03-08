@@ -13,13 +13,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:background="@color/colorAppBlue">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
             android:src="@drawable/bg_top_internas"/>
+
+        <ImageView
+            android:id="@+id/officer_result_carrito"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/coche_patrulla"/>
     </RelativeLayout>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
@@ -52,7 +60,6 @@
         app:typeface="Tw_Cen_MT"/>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
-        android:id="@+id/officer_result_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/officers_ok"
@@ -62,9 +69,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorAppYellow"/>
+        android:background="@color/colorAppYellow"
+        app:typeface="Tw_Cen_MT"/>
 
     <LinearLayout
+        android:id="@+id/officer_result_evaluate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -73,8 +82,8 @@
         android:padding="15dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/placa"
             android:layout_gravity="center_vertical"/>
 
@@ -89,6 +98,7 @@
             android:textColor="@color/colorTextBackground"
             android:textSize="30sp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            app:typeface="Tw_Cen_MT_Bold"/>
         </LinearLayout>
 </LinearLayout>

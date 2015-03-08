@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import mx.citydevs.hackcdmx.beans.Infraction;
 import mx.citydevs.hackcdmx.beans.Officer;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
 
@@ -21,13 +22,22 @@ public class GsonParser {
 		return publication;
 	}
 
-    public static List<Officer> getListFromJSON(String json) {
+    public static List<Officer> getOfficerListFromJSON(String json) {
         Gson gson = new Gson();
 
         Type listType = new TypeToken<List<Officer>>(){}.getType();
-        List<Officer> listPublications = gson.fromJson(json, listType);
+        List<Officer> listOfficers = gson.fromJson(json, listType);
 
-        return listPublications;
+        return listOfficers;
+    }
+
+    public static List<Infraction> getInfractionsListFromJSON(String json) {
+        Gson gson = new Gson();
+
+        Type listType = new TypeToken<List<Infraction>>(){}.getType();
+        List<Infraction> listInfractions = gson.fromJson(json, listType);
+
+        return listInfractions;
     }
 
 	public static String createJsonFromObject(Object object) {

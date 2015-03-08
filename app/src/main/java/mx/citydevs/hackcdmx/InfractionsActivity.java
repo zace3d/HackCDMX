@@ -16,8 +16,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import mx.citydevs.hackcdmx.adapters.InfractionsListViewAdapter;
 import mx.citydevs.hackcdmx.adapters.OfficerListViewAdapter;
-import mx.citydevs.hackcdmx.beans.Officer;
+import mx.citydevs.hackcdmx.beans.Infraction;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
 import mx.citydevs.hackcdmx.httpconnection.HttpConnection;
 import mx.citydevs.hackcdmx.parser.GsonParser;
@@ -25,17 +26,17 @@ import mx.citydevs.hackcdmx.parser.GsonParser;
 /**
  * Created by zace3d on 3/7/15.
  */
-public class OfficersActivity extends ActionBarActivity {
+public class InfractionsActivity extends ActionBarActivity {
 
-    private String TAG_CLASS = OfficersActivity.class.getSimpleName();
+    private String TAG_CLASS = InfractionsActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_officers);
+        setContentView(R.layout.activity_infractions);
 
         setSupportActionBar();
-        getOfficersData();
+        getInfractionsData();
     }
 
     protected void setSupportActionBar() {
@@ -53,61 +54,48 @@ public class OfficersActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void initUI(ArrayList<Officer> listOfficers) {
-        ListView lvOfficers = (ListView) findViewById(R.id.officers_lv);
+    private void initUI(ArrayList<Infraction> listOfficers) {
+        ListView lvInfractions = (ListView) findViewById(R.id.infractions_lv);
 
-        // final OfficersAdapter adapter = new OfficersAdapter(this, listOfficers);
-        // lvOfficers.setAdapter(adapter);
-
-        /*AutoCompleteTextView actvDestination = (AutoCompleteTextView) findViewById(R.id.officers_actv_places);
-        actvDestination.setAdapter(new PlacesAutoCompleteAdapter(this, R.layout.places_list_item));
-        actvDestination.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });*/
-
-        ArrayList<Officer> newList = new ArrayList();
-        for (Officer officer : listOfficers) {
-            if (officer.getNombre() != null)
-                newList.add(officer);
+        ArrayList<Infraction> newList = new ArrayList();
+        for (Infraction infraction : listOfficers) {
+            if (infraction.getInfraccion() != null)
+                newList.add(infraction);
         }
 
-        final OfficerListViewAdapter adapter = new OfficerListViewAdapter(this, newList);
-        lvOfficers.setAdapter(adapter);
+        final InfractionsListViewAdapter adapter = new InfractionsListViewAdapter(this, newList);
+        lvInfractions.setAdapter(adapter);
 
-        final EditText actvOfficers = (EditText) findViewById(R.id.officers_et_officers);
-        actvOfficers.addTextChangedListener(new TextWatcher() {
-            @Override public void afterTextChanged(Editable s) {
-                String text = actvOfficers.getText().toString().toLowerCase(Locale.getDefault());
+        final EditText actvInfractions = (EditText) findViewById(R.id.infractions_et_filter);
+        actvInfractions.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = actvInfractions.getText().toString().toLowerCase(Locale.getDefault());
                 adapter.filter(text);
             }
 
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
     }
 
-    /*private View getItemView() {
-
-    }*/
-
-    private void getOfficersData() {
-        GetOfficersPublicationsAsyncTask task =  new GetOfficersPublicationsAsyncTask();
+    private void getInfractionsData() {
+        GetInfractionsPublicationsAsyncTask task =  new GetInfractionsPublicationsAsyncTask();
         task.execute();
     }
 
-    private class GetOfficersPublicationsAsyncTask extends AsyncTask<String, String, String> {
+    private class GetInfractionsPublicationsAsyncTask extends AsyncTask<String, String, String> {
         private ProgressDialog dialog;
 
-        public GetOfficersPublicationsAsyncTask() {}
+        public GetInfractionsPublicationsAsyncTask() {}
 
         @Override
         protected void onPreExecute() {
-            dialog = new ProgressDialog(OfficersActivity.this);
-            dialog.setMessage(getResources().getString(R.string.getdata_loading_officers));
+            dialog = new ProgressDialog(InfractionsActivity.this);
+            dialog.setMessage(getResources().getString(R.string.getdata_loading_infractions));
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(true);
             dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -121,7 +109,7 @@ public class OfficersActivity extends ActionBarActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String result = HttpConnection.GET(HttpConnection.URL + HttpConnection.OFFICERS);
+            String result = HttpConnection.GET(HttpConnection.URL + HttpConnection.INFRACTIONS);
             return result;
         }
 
@@ -135,7 +123,7 @@ public class OfficersActivity extends ActionBarActivity {
 
             if (result != null) {
                 try {
-                    ArrayList<Officer> listOfficers = (ArrayList<Officer>) GsonParser.getOfficerListFromJSON(result);
+                    ArrayList<Infraction> listOfficers = (ArrayList<Infraction>) GsonParser.getInfractionsListFromJSON(result);
 
                     if (listOfficers != null) {
                         initUI(listOfficers);

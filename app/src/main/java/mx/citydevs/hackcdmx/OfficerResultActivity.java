@@ -1,31 +1,19 @@
 package mx.citydevs.hackcdmx;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import mx.citydevs.hackcdmx.adapters.ListViewAdapter;
 import mx.citydevs.hackcdmx.beans.Officer;
-import mx.citydevs.hackcdmx.dialogues.Dialogues;
-import mx.citydevs.hackcdmx.httpconnection.HttpConnection;
-import mx.citydevs.hackcdmx.parser.GsonParser;
 import mx.citydevs.hackcdmx.views.CustomTextView;
 
 /**
  * Created by zace3d on 3/7/15.
  */
-public class OfficerResultActivity extends ActionBarActivity {
+public class OfficerResultActivity extends ActionBarActivity implements View.OnClickListener {
 
     private String TAG_CLASS = OfficerResultActivity.class.getSimpleName();
 
@@ -62,5 +50,21 @@ public class OfficerResultActivity extends ActionBarActivity {
 
         CustomTextView tvPlaca = (CustomTextView) findViewById(R.id.officer_result_placa);
         tvPlaca.append(officer.getPlaca());
+
+        findViewById(R.id.officer_result_evaluate).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.officer_result_evaluate:
+                startRankIntent();
+                break;
+        }
+    }
+
+    private void startRankIntent() {
+        Intent intent = new Intent(getBaseContext(), RankActivity.class);
+        startActivity(intent);
     }
 }

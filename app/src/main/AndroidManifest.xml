@@ -25,13 +25,17 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"/>
 
-        <activity android:name=".RankActivity"
+        <activity android:name=".InfractionsActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"/>
 
         <activity android:name=".OfficerResultActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".OfficersActivity"/>
+
+        <activity android:name=".RankActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".OfficerResultActivity"/>
 
     </application>
 

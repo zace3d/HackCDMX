@@ -24,26 +24,20 @@
             android:src="@drawable/bg_top_internas"/>
 
         <EditText
-            android:id="@+id/officers_et_officers"
+            android:id="@+id/infractions_et_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:ems="10"
-            android:hint="@string/officers_name_input"
+            android:hint="@string/infractions_name_input"
             android:text=""
             android:textColorHint="@color/colorAppGrey"
             android:textColor="@color/colorWhite"
             android:padding="16dp" />
     </LinearLayout>
 
-    <AutoCompleteTextView
-        android:id="@+id/officers_actv_places"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
     <ListView
-        android:id="@+id/officers_lv"
+        android:id="@+id/infractions_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:descendantFocusability="afterDescendants"
