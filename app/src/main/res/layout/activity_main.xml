@@ -14,24 +14,53 @@
     <LinearLayout
         android:id="@+id/main_header"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/actionbar"
-        android:background="@drawable/bg_carretera"
         android:orientation="vertical">
 
-        <ImageView
+        <View
             android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorAppYellow"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="10dp"
-            android:src="@drawable/logo" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <mx.citydevs.hackcdmx.views.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IN / "
+                android:textColor="@color/colorAppDark"
+                android:textSize="40sp"
+                app:typeface="Tw_Cen_MT_Bold" />
+
+            <mx.citydevs.hackcdmx.views.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FRACCIÓN"
+                android:textColor="@color/colorAppDark"
+                android:textSize="40sp"
+                app:typeface="Tw_Cen_MT" />
+        </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="15dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
             android:src="@drawable/cdmx_logo" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorAppYellow"/>
     </LinearLayout>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
@@ -44,7 +73,7 @@
         android:padding="20dp"
         android:text="@string/main_description"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        app:typeface="OpenSans_Regular" />
+        app:typeface="Tw_Cen_MT" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,7 +87,6 @@
             style="@style/TextAppearance.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/selector_btn_circle"
             android:gravity="center"
             android:padding="40dp"
             android:text="@string/officers"
@@ -71,7 +99,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/selector_btn_circle"
             android:gravity="center"
             android:padding="40dp"
             android:text="@string/infractions"

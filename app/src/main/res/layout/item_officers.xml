@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAppGreyBgr">
+    android:background="@drawable/selector_btn">
 
     <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/item_officers_word"

@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="IN / "
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorAppDark"
             android:textSize="40sp"
             app:typeface="Tw_Cen_MT_Bold" />
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="FRACCIÓN"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorAppDark"
             android:textSize="40sp"
             app:typeface="Tw_Cen_MT" />
     </LinearLayout>

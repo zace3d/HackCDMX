@@ -49,6 +49,7 @@ public class OfficersActivity extends ActionBarActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
         mToolbar.setTitle("");
         mToolbar.getBackground().setAlpha(255);
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setText("");
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
