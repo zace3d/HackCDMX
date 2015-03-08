@@ -36,6 +36,11 @@
         <enum name="Vollkorn_BoldItalic" value="29" />
         <enum name="Vollkorn_Italic" value="30" />
         <enum name="Vollkorn_Regular" value="31" />
+
+        <enum name="Tw_Cen_MT" value="32" />
+        <enum name="Tw_Cen_MT_Bold" value="33" />
+        <enum name="Tw_Cen_MT_Bold_Italic" value="34" />
+        <enum name="Tw_Cen_MT_Italic" value="35" />
     </attr>
     
     <declare-styleable name="CustomTextView">

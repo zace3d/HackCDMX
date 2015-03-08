@@ -36,4 +36,12 @@
     <color name="colorTextBackground">#F9F8F7</color>
     <color name="colorPrimaryOrange">#F24630</color>
 
+    <color name="colorAppPrimary">#7ae9e8</color>
+    <color name="colorAppYellow">#f5fc32</color>
+    <color name="colorAppDark">#285252</color>
+    <color name="colorAppBlueLight">#5db1b1</color>
+    <color name="colorAppGrey">#7d7a7a</color>
+    <color name="colorAppGreyLight">#c2c2c2</color>
+    <color name="colorAppBlue">#5db1b1</color>
+
 </resources>

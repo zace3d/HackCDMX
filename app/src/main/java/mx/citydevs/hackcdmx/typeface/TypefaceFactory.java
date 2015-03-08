@@ -39,11 +39,17 @@ public class TypefaceFactory {
     public static final int Vollkorn_BoldItalic = 29;
     public static final int Vollkorn_Italic = 30;
     public static final int Vollkorn_Regular = 31;
-	
+
+    public static final int Tw_Cen_MT = 32;
+    public static final int Tw_Cen_MT_Bold = 33;
+    public static final int Tw_Cen_MT_Bold_Italic = 34;
+    public static final int Tw_Cen_MT_Italic = 35;
+
 	private static String typefaceDirRoboto = "fonts/Roboto/";
     private static String typefaceDirRobotoCondensed = "fonts/RobotoCondensed/";
     private static String typefaceDirOpenSans = "fonts/OpenSans/";
     private static String typefaceDirVollkorn = "fonts/Vollkorn/";
+    private static String typefaceDirTW = "fonts/TW/";
 	
 	public static Typeface createTypeface(Context context, int type) {
 		if(type == Roboto_Black) {
@@ -142,7 +148,22 @@ public class TypefaceFactory {
         } else if(type == Vollkorn_Regular) {
             Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirVollkorn + "Vollkorn-Regular.ttf");
             return typeface;
-        } else {
+        } else if(type == Tw_Cen_MT) {
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirTW + "Tw_Cen_MT.ttf");
+            return typeface;
+        } else if(type == Tw_Cen_MT_Bold) {
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirTW + "Tw_Cen_MT_Bold.ttf");
+            return typeface;
+        } else if(type == Tw_Cen_MT_Bold_Italic) {
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirTW + "Tw_Cen_MT_Bold_Italic.ttf");
+            return typeface;
+        } else if(type == Tw_Cen_MT_Italic) {
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirTW + "Tw_Cen_MT_Italic.ttf");
+            return typeface;
+        }
+
+
+        else {
             Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirOpenSans + "OpenSans-Regular.ttf");
 			return typeface;
 		}

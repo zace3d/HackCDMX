@@ -21,7 +21,10 @@ import mx.citydevs.hackcdmx.views.CustomViewPager;
 /**
  * Created by zace3d on 3/7/15.
  */
-public class RankActivity extends ActionBarActivity implements View.OnClickListener {
+public class RankActivity extends ActionBarActivity {
+
+    private CustomViewPager viewPager;
+    private int current_index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +35,16 @@ public class RankActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void initUI() {
-        CustomViewPager viewPager = (CustomViewPager) findViewById(R.id.rank_pager);
+        viewPager = (CustomViewPager) findViewById(R.id.rank_pager);
 
         PublicationPagerAdapter mPagerAdapter = new PublicationPagerAdapter(getSupportFragmentManager());
 
         ArrayList<String> listQuestions = new ArrayList<>();
-        listQuestions.add("Pregunta 1");
-        listQuestions.add("Pregunta 2");
-        listQuestions.add("Pregunta 3");
-        listQuestions.add("Pregunta 4");
-        listQuestions.add("Pregunta 5");
+        listQuestions.add("¿El oficial se identificó con nombre y apellido?");
+        listQuestions.add("¿El oficial se identificó con nombre y apellido?");
+        listQuestions.add("¿El oficial se identificó con nombre y apellido?");
+        listQuestions.add("¿El oficial se identificó con nombre y apellido?");
+        listQuestions.add("¿El oficial se identificó con nombre y apellido?");
 
         for (int i = 0; i < listQuestions.size(); i++) {
             mPagerAdapter.addFragment(RankFragment.newInstance(i, listQuestions.get(i)));
@@ -57,46 +60,7 @@ public class RankActivity extends ActionBarActivity implements View.OnClickListe
 
     public void setResultQuestion(String result) {
         if (result.equals("OK")) {
-
+            viewPager.setCurrentItem(++current_index, true);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.main_btn_officers:
-                startOfficersIntent();
-
-                break;
-            case R.id.main_btn_infractions:
-                break;
-        }
-    }
-
-    private void startOfficersIntent() {
-        Intent intent = new Intent(getBaseContext(), OfficersActivity.class);
-        startActivity(intent);
     }
 }

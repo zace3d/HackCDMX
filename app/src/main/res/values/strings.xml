@@ -4,9 +4,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="action_aboutme">Acerca de</string>
+
+    <string name="evalua_label">Evalúa el proceso</string>
+
     <string name="title_name">Esta es una aplicación para la SSP</string>
     <string name="officers">Policias</string>
     <string name="infractions">Infracciones</string>
 
     <string name="getdata_loading">Obteniendo información de Oficiales</string>
+
+    <string name="main_description">Consulta quién te puede infraccionar y el tipo de sanción que te deben aplicar</string>
 </resources>

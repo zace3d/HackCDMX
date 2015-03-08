@@ -26,9 +26,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
         mToolbar.setTitle("");
-        mToolbar.getBackground().setAlpha(255);
+        mToolbar.getBackground().setAlpha(0);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText(getResources().getString(R.string.app_name));
+        actionbarTitle.setText("");
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
 
         setSupportActionBar(mToolbar);
@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_aboutme) {
             return true;
         }
 
