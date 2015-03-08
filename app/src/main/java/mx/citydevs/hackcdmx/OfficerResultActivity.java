@@ -60,7 +60,7 @@ public class OfficerResultActivity extends ActionBarActivity {
         CustomTextView tvName = (CustomTextView) findViewById(R.id.officer_result_name);
         tvName.setText(officer.getNombre());
 
-        CustomTextView tvPlaca = (CustomTextView) findViewById(R.id.officer_result_name);
-        tvPlaca.setText(officer.getNombre());
+        CustomTextView tvPlaca = (CustomTextView) findViewById(R.id.officer_result_placa);
+        tvPlaca.append(officer.getPlaca());
     }
 }

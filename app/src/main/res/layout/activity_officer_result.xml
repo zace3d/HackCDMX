@@ -14,13 +14,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/colorAppPrimary">
+        android:background="@color/colorAppBlue">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/bg_top_internas"
-            android:layout_centerVertical="true"/>
+            android:src="@drawable/bg_top_internas"/>
     </RelativeLayout>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
