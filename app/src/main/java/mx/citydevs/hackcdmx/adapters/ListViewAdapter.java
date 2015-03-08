@@ -87,12 +87,9 @@ public class ListViewAdapter extends BaseAdapter {
         // Listen for ListView Item Click
         view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-                // Send single item click data to SingleItemView Class
-                /*Intent intent = new Intent(mContext, SingleItemView.class);
-                // Pass all data flag
-                // Start SingleItemView Class
-                mContext.startActivity(intent);*/
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, SingleItemView.class);
+                mContext.startActivity(intent);
             }
         });
 
