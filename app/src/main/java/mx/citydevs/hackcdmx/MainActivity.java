@@ -70,12 +70,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 break;
             case R.id.main_btn_infractions:
+                startRankIntent();
                 break;
         }
     }
 
     private void startOfficersIntent() {
         Intent intent = new Intent(getBaseContext(), OfficersActivity.class);
+        startActivity(intent);
+    }
+
+    private void startRankIntent() {
+        Intent intent = new Intent(getBaseContext(), RankActivity.class);
         startActivity(intent);
     }
 }

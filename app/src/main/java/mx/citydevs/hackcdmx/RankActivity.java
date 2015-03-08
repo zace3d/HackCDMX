@@ -2,12 +2,21 @@ package mx.citydevs.hackcdmx;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.viewpagerindicator.CirclePageIndicator;
+
+import java.util.ArrayList;
+
+import mx.citydevs.hackcdmx.adapters.PublicationPagerAdapter;
+import mx.citydevs.hackcdmx.fragments.RankFragment;
+import mx.citydevs.hackcdmx.views.CustomViewPager;
 
 /**
  * Created by zace3d on 3/7/15.
@@ -19,25 +28,37 @@ public class RankActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
 
-        setSupportActionBar();
         initUI();
     }
 
-    protected void setSupportActionBar() {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle("");
-        mToolbar.getBackground().setAlpha(255);
-        TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText(getResources().getString(R.string.app_name));
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+    private void initUI() {
+        CustomViewPager viewPager = (CustomViewPager) findViewById(R.id.rank_pager);
 
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setElevation(5);
+        PublicationPagerAdapter mPagerAdapter = new PublicationPagerAdapter(getSupportFragmentManager());
+
+        ArrayList<String> listQuestions = new ArrayList<>();
+        listQuestions.add("Pregunta 1");
+        listQuestions.add("Pregunta 2");
+        listQuestions.add("Pregunta 3");
+        listQuestions.add("Pregunta 4");
+        listQuestions.add("Pregunta 5");
+
+        for (int i = 0; i < listQuestions.size(); i++) {
+            mPagerAdapter.addFragment(RankFragment.newInstance(i, listQuestions.get(i)));
+        }
+
+        viewPager.setAdapter(mPagerAdapter);
+        viewPager.setPageMargin(0);
+
+        // Viewpager indicator
+        CirclePageIndicator titleIndicator = (CirclePageIndicator) findViewById(R.id.rank_pager_indicator);
+        titleIndicator.setViewPager(viewPager);
     }
 
-    private void initUI() {
-        findViewById(R.id.main_btn_officers).setOnClickListener(this);
-        findViewById(R.id.main_btn_infractions).setOnClickListener(this);
+    public void setResultQuestion(String result) {
+        if (result.equals("OK")) {
+
+        }
     }
 
     @Override

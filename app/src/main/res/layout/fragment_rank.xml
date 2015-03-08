@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
 
     <mx.citydevs.hackcdmx.views.CustomTextView
-        android:id="@+id/fragment_rank_"
+        android:id="@+id/fragment_rank_question"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/colorText"
+        android:text=""
+        app:typeface="OpenSans_Bold"/>
 
     <LinearLayout
+        android:id="@+id/fragment_rank_question_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
         android:orientation="horizontal">
 
         <mx.citydevs.hackcdmx.views.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:id="@+id/fragment_rank_btn_yes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@drawable/selector_text"
+            android:background="@drawable/selector_btn"
+            android:text="Sí"
+            app:typeface="OpenSans_Regular"/>
 
         <mx.citydevs.hackcdmx.views.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:id="@+id/fragment_rank_btn_no"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@drawable/selector_text"
+            android:background="@drawable/selector_btn"
+            android:text="No"
+            app:typeface="OpenSans_Regular"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
