@@ -11,14 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:padding="30dp">
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <mx.citydevs.hackcdmx.views.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="IN / "
             android:textColor="@color/colorText"
-            android:textSize="30sp"
+            android:textSize="40sp"
             app:typeface="Tw_Cen_MT_Bold" />
 
         <mx.citydevs.hackcdmx.views.CustomTextView
@@ -26,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="FRACCIÓN"
             android:textColor="@color/colorText"
-            android:textSize="30sp"
+            android:textSize="40sp"
             app:typeface="Tw_Cen_MT" />
     </LinearLayout>
 </RelativeLayout>

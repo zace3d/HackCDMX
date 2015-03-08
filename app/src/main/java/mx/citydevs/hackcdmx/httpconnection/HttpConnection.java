@@ -20,8 +20,10 @@ import mx.citydevs.hackcdmx.dialogues.Dialogues;
 public class HttpConnection {
 	public static final String TAG_CLASS = HttpConnection.class.getName();
 	
-	public static final String URL = "http://carloscastellanos.com.mx/HackCDMX/";
-    public static final String OFFICERS = "policias.json";
+	public static final String URL = "http://infracciones.herokuapp.com/";
+    public static final String OFFICERS = "cops.json";
+
+    public static final String RANK = "/cops/new?identification=1&infraccion=0&articulo=1&coincidio=0&documents=1&copy=1&latitude=19.4394835&longitude=-99.1823396&cop_id=830625";
 
 	public static String GET(String url) {
 		HttpClient client = new DefaultHttpClient();

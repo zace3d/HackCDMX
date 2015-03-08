@@ -20,11 +20,11 @@
          You can also set colorControlNormal, colorControlActivated
          colorControlHighlight, and colorSwitchThumbNormal.
         -->
-        <item name="colorControlNormal">@color/colorWhite</item>
-        <item name="colorControlActivated">@color/colorWhite</item>
-        <item name="colorControlHighlight">@color/colorWhite</item>
-        <item name="colorSwitchThumbNormal">@color/colorWhite</item>
-        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="colorControlNormal">@color/colorAppYellow</item>
+        <item name="colorControlActivated">@color/colorAppYellow</item>
+        <item name="colorControlHighlight">@color/colorAppYellow</item>
+        <item name="colorSwitchThumbNormal">@color/colorAppYellow</item>
+        <item name="actionMenuTextColor">@color/colorAppYellow</item>
 
         <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
     </style>

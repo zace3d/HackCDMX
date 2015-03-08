@@ -43,4 +43,6 @@
     <color name="colorAppGreyLight">#c2c2c2</color>
     <color name="colorAppBlue">#5db1b1</color>
 
+    <color name="colorAppGreyBgr">#E8E8E8</color>
+
 </resources>

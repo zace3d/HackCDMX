@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAppGreyBgr"
     android:orientation="vertical">
 
     <include
@@ -10,26 +11,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <include
-        android:id="@+id/header"
+    <LinearLayout
+        android:id="@+id/header_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/actionbar"
-        layout="@layout/header"/>
+        android:orientation="vertical"
+        android:background="@color/colorAppPrimary">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/fragment_rank_road"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:src="@drawable/bg_top_internas" />
+    </LinearLayout>
+
 
     <mx.citydevs.hackcdmx.views.CustomViewPager
         android:id="@+id/rank_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header"
-        android:layout_above="@+id/rank_pager_indicator"/>
+        android:layout_above="@+id/rank_pager_indicator"
+        android:layout_below="@+id/header_container" />
 
     <com.viewpagerindicator.CirclePageIndicator
         android:id="@+id/rank_pager_indicator"
         style="@style/AppTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
         android:padding="10dip" />
 </RelativeLayout>

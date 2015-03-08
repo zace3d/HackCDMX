@@ -29,6 +29,10 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".OfficerResultActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".OfficersActivity"/>
+
     </application>
 
 </manifest>

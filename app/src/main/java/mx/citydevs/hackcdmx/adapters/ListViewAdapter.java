@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import mx.citydevs.hackcdmx.OfficerResultActivity;
 import mx.citydevs.hackcdmx.R;
 import mx.citydevs.hackcdmx.beans.Officer;
 import mx.citydevs.hackcdmx.views.CustomTextView;
@@ -42,6 +43,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     public class ViewHolder {
         CustomTextView nombre;
+        CustomTextView placa;
         CustomTextView word;
     }
 
@@ -68,12 +70,13 @@ public class ListViewAdapter extends BaseAdapter {
             // Locate the TextViews in listview_item.xml
             holder.nombre = (CustomTextView) view.findViewById(R.id.item_officers_name);
             holder.word = (CustomTextView) view.findViewById(R.id.item_officers_word);
+            holder.placa = (CustomTextView) view.findViewById(R.id.item_officers_placa);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
-        String nombre = data.get(position).getNombre();
+        final String nombre = data.get(position).getNombre();
         /*if (!nombre.startsWith(abcWord)) {
             holder.word.setText(nombre.charAt(0));
             holder.word.setVisibility(View.VISIBLE);
@@ -84,11 +87,16 @@ public class ListViewAdapter extends BaseAdapter {
         holder.nombre.setText(nombre);
         setColor(holder.nombre, nombre, regex, Color.GREEN);
 
+        holder.placa.setText(data.get(position).getPlaca() != null ? data.get(position).getPlaca() : "");
+
+        final Officer officer = data.get(position);
+
         // Listen for ListView Item Click
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, SingleItemView.class);
+                Intent intent = new Intent(mContext, OfficerResultActivity.class);
+                intent.putExtra("officer", officer);
                 mContext.startActivity(intent);
             }
         });
@@ -116,10 +124,11 @@ public class ListViewAdapter extends BaseAdapter {
             if (charText.length() == 0) {
                 data.addAll(arraylist);
             } else {
-                for (Officer wp : arraylist) {
-                    if (wp.getNombre() != null) {
-                        if (wp.getNombre().toLowerCase(Locale.getDefault()).contains(charText)) {
-                            data.add(wp);
+                for (Officer officer : arraylist) {
+                    if (officer.getNombre() != null && officer.getPlaca() != null) {
+                        if (officer.getNombre().toLowerCase(Locale.getDefault()).contains(charText) ||
+                                officer.getPlaca().contains(charText)) {
+                            data.add(officer);
 
                             regex = charText;
                         }

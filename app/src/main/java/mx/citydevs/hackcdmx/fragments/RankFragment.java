@@ -92,46 +92,20 @@ public class RankFragment extends Fragment {
     View.OnClickListener RankOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            PostQuestionPublicationsAsyncTask task = new PostQuestionPublicationsAsyncTask();
-            task.execute();
+            switch (v.getId()) {
+                case R.id.fragment_rank_btn_yes:
+                    setAnswerId(1);
+                    break;
+                case R.id.fragment_rank_btn_no:
+                    setAnswerId(0);
+                    break;
+            }
         }
     };
 
-    private class PostQuestionPublicationsAsyncTask extends AsyncTask<String, String, String> {
-        private ProgressDialog dialog;
+    private void setAnswerId(int answerId) {
+        ((RankActivity) getActivity()).setResultQuestion("OK");
 
-        public PostQuestionPublicationsAsyncTask() {}
-
-        @Override
-        protected void onPreExecute() {
-            dialog = new ProgressDialog(getActivity());
-            dialog.setMessage(getResources().getString(R.string.getdata_loading));
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.setCancelable(false);
-            dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String result = HttpConnection.GET(HttpConnection.URL + HttpConnection.OFFICERS);
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            if (dialog != null && dialog.isShowing()) {
-                dialog.dismiss();
-            }
-
-            Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
-
-            if (result != null) {
-                try {
-                    ((RankActivity) getActivity()).setResultQuestion("OK");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        // Dialogues.Toast(getActivity(), "ANSWER: " + answerId + ", INDEX: " + index, Toast.LENGTH_SHORT);
     }
 }
