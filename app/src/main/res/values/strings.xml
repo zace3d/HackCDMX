@@ -9,8 +9,8 @@
     <string name="evalua_label">Evalúa el proceso</string>
 
     <string name="title_name">Esta es una aplicación para la SSP</string>
-    <string name="officers">Policias</string>
-    <string name="infractions">Infracciones</string>
+    <string name="menu_officers">¿TE PUEDE INFRACCIONAR?</string>
+    <string name="menu_infractions">CONSULTA TU INFRACCIÓN</string>
 
     <string name="getdata_loading_officers">Obteniendo información de oficiales</string>
     <string name="getdata_loading_infractions">Obteniendo información de infracciones</string>
