@@ -60,21 +60,9 @@ public class OfficersActivity extends ActionBarActivity {
     private void initUI(ArrayList<Officer> listOfficers) {
         ListView lvOfficers = (ListView) findViewById(R.id.officers_lv);
 
-        // final OfficersAdapter adapter = new OfficersAdapter(this, listOfficers);
-        // lvOfficers.setAdapter(adapter);
-
-        /*AutoCompleteTextView actvDestination = (AutoCompleteTextView) findViewById(R.id.officers_actv_places);
-        actvDestination.setAdapter(new PlacesAutoCompleteAdapter(this, R.layout.places_list_item));
-        actvDestination.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });*/
-
         ArrayList<Officer> newList = new ArrayList();
         for (Officer officer : listOfficers) {
-            if (officer.getNombre() != null)
+            if (officer.getPlaca() != null)
                 newList.add(officer);
         }
 
@@ -125,7 +113,8 @@ public class OfficersActivity extends ActionBarActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String result = HttpConnection.GET(HttpConnection.URL + HttpConnection.OFFICERS);
+            String result = HttpConnection.GET(HttpConnection.OFFICERS);
+            Log.d("**********",result);
             return result;
         }
 
@@ -142,6 +131,7 @@ public class OfficersActivity extends ActionBarActivity {
                     ArrayList<Officer> listOfficers = (ArrayList<Officer>) GsonParser.getOfficerListFromJSON(result);
 
                     if (listOfficers != null) {
+                        Log.d("**********",listOfficers.size()+"");
                         initUI(listOfficers);
                     }
                 } catch (Exception e) {

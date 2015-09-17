@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.main_btn_officer).setOnClickListener(this);
         findViewById(R.id.main_btn_infraction).setOnClickListener(this);
     }
-    
+
 
     @Override
     public void onClick(View v) {
