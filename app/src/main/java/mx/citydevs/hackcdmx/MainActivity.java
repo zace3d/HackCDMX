@@ -19,7 +19,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setSupportActionBar();
+        //setSupportActionBar();
         initUI();
     }
 
@@ -36,8 +36,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void initUI() {
-        findViewById(R.id.main_btn_officers).setOnClickListener(this);
-        findViewById(R.id.main_btn_infractions).setOnClickListener(this);
+        findViewById(R.id.main_btn_officer).setOnClickListener(this);
+        findViewById(R.id.main_btn_infraction).setOnClickListener(this);
     }
 
     @Override
@@ -65,11 +65,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.main_btn_officers:
+            case R.id.main_btn_officer:
                 startOfficersIntent();
 
                 break;
-            case R.id.main_btn_infractions:
+            case R.id.main_btn_infraction:
                 startInfractionsIntent();
                 break;
         }

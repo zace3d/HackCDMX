@@ -4,21 +4,20 @@
     android:id="@+id/actionbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAppGreyBgr"
+    android:background="@color/colorAppBlue"
     android:minHeight="?attr/actionBarSize">
 
     <ImageView
         android:id="@+id/actionbar_icon"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:src="@drawable/coche_patrulla"/>
+        android:src="@mipmap/ic_launcher"/>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/actionbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorTextBackground"
         app:typeface="Roboto_Regular" />

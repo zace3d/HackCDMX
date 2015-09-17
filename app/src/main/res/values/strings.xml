@@ -25,4 +25,13 @@
     <string name="officers_ok">Si te puede infraccionar</string>
 
     <string name="officers_btn_evaluate">Evaluar\nProceso</string>
+    <string name="title_officer">¿Te pueden infraccionar?</string>
+    <string name="subtitle_officer">Consulta la lista de oficiales de tránsito que pueden infraccionarte.</string>
+    <string name="btn_officer">Buscar agente</string>
+
+    <string name="title_infraction">Consulta tu infracción</string>
+    <string name="subtitle_infraction">Consulta la multa que debes pagar por la infracción que acabas de cometer.</string>
+    <string name="btn_infraction">Buscar infracción</string>
+
+    <string name="main_menu">Menú</string>
 </resources>
