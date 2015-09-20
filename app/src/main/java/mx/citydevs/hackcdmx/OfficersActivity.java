@@ -35,13 +35,15 @@ public class OfficersActivity extends ActionBarActivity {
     private String TAG_CLASS = OfficersActivity.class.getSimpleName();
     DBHelper BD = null;
     SQLiteDatabase bd = null;
+    public static int LOCAL = 0;
+    public static int CONSULTA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officers);
         setSupportActionBar();
-        getOfficersData();
+        getOfficersData(LOCAL);
     }
 
     protected void setSupportActionBar() {
@@ -54,7 +56,13 @@ public class OfficersActivity extends ActionBarActivity {
         actionbarIcon.setVisibility(View.GONE);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
-
+        ImageView actionbar_reload = (ImageView)mToolbar.findViewById(R.id.actionbar_reload);
+        actionbar_reload.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                getOfficersData(CONSULTA);
+            }
+        });
         setSupportActionBar(mToolbar);
         getSupportActionBar().setElevation(5);
 
@@ -75,27 +83,32 @@ public class OfficersActivity extends ActionBarActivity {
 
         final EditText actvOfficers = (EditText) findViewById(R.id.officers_et_officers);
         actvOfficers.addTextChangedListener(new TextWatcher() {
-            @Override public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
                 String text = actvOfficers.getText().toString().toLowerCase(Locale.getDefault());
                 adapter.filter(text);
             }
 
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
     }
 
-    private void getOfficersData() {
+    private void getOfficersData(int val) {
     String cops= null;
         try {
             BD = new DBHelper(OfficersActivity.this);
-             bd = BD.loadDataBase(OfficersActivity.this, BD);
+            bd = BD.loadDataBase(OfficersActivity.this, BD);
             cops =	BD.getPolicias(bd);
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        if(cops != null){
+        if(cops != null && val != CONSULTA){
             Log.d("**************", "local");
             llenaCops(cops);
         }else{
