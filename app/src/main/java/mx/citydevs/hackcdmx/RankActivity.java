@@ -44,6 +44,12 @@ public class RankActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
 
+
+        setSize();
+        initUI();
+    }
+
+    private void setSize() {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -56,8 +62,6 @@ public class RankActivity extends FragmentActivity {
         params.width = width;
         params.y = -10;
         this.getWindow().setAttributes(params);
-
-        initUI();
     }
 
     private void initUI() {
@@ -121,7 +125,7 @@ public class RankActivity extends FragmentActivity {
             dialog = new ProgressDialog(RankActivity.this);
             dialog.setMessage(getResources().getString(R.string.postrank_loading));
             dialog.setCanceledOnTouchOutside(false);
-            dialog.setCancelable(false);
+            dialog.setCancelable(true);
             dialog.show();
         }
 
