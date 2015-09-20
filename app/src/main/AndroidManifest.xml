@@ -34,6 +34,7 @@
 
         <activity android:name=".RankActivity"
             android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
             android:parentActivityName=".OfficerResultActivity"/>
     </application>
 
