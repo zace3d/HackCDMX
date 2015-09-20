@@ -39,26 +39,7 @@ public class RankActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
-
-        setSupportActionBar();
         initUI();
-    }
-
-    protected void setSupportActionBar() {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle("");
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-        mToolbar.getBackground().setAlpha(255);
-        ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
-        actionbarIcon.setVisibility(View.GONE);
-        TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText("");
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
-
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setElevation(5);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initUI() {

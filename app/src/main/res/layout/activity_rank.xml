@@ -5,11 +5,7 @@
     android:background="@color/colorAppGreyBgr"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/actionbar"
-        layout="@layout/actionbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 
     <LinearLayout
         android:id="@+id/header_container"
@@ -18,19 +14,6 @@
         android:layout_below="@+id/actionbar"
         android:orientation="vertical"
         android:background="@color/colorAppBlue">
-
-        <include
-            android:id="@+id/header"
-            layout="@layout/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/fragment_rank_road"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="-2dp"
-            android:src="@drawable/bg_top_internas" />
     </LinearLayout>
 
 
