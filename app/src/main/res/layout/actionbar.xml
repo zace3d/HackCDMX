@@ -19,7 +19,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorTextBackground"
+        android:textColor="@color/colorAppBlue"
         app:typeface="Roboto_Regular" />
+
+    <ImageView
+        android:id="@+id/actionbar_reload"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:src="@mipmap/ic_launcher"/>
 
 </android.support.v7.widget.Toolbar>

@@ -40,23 +40,20 @@ public class OfficersActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officers);
-
-
-
         setSupportActionBar();
         getOfficersData();
     }
 
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle("");
+        mToolbar.setTitle(getResources().getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorAppBlue));
         mToolbar.getBackground().setAlpha(255);
         mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
         actionbarIcon.setVisibility(View.GONE);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText("");
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+        actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setElevation(5);
@@ -88,10 +85,6 @@ public class OfficersActivity extends ActionBarActivity {
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
     }
-
-    /*private View getItemView() {
-
-    }*/
 
     private void getOfficersData() {
     String cops= null;

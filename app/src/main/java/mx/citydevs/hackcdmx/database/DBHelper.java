@@ -155,13 +155,16 @@ public class DBHelper extends SQLiteOpenHelper {
         Time now = new Time();
         now.setToNow();
         String date = Long.toString(now.toMillis(false));
-
         try{
-            bd.execSQL("insert into cops (cops_json,cops_date) values ('"+placa+"','"+date+"');");
-            Log.d("***********","Insertando Cops en base de datos");
-            return true;
+            if(deleteCops(bd)){
+                bd.execSQL("insert into cops (cops_json,cops_date) values ('" + placa + "','" + date + "');");
+                Log.d("***********","Insertando Cops en base de datos");
+                return true;
+            }
+            Log.d("*****FALLA******","No se insertó Cops en base de datos");
+            return false;
         }catch(Exception e){
-            Log.d("******FALLA****","Insertando Cops en base de datos");
+            Log.d("******FALLA****", "Insertando Cops en base de datos");
             e.printStackTrace();
             return false;
         }
@@ -177,6 +180,11 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Regresa el Json de policias
+     * @param bd
+     * @return
+     */
     public String getPolicias(SQLiteDatabase bd){
         Cursor c = null;
         String json = null;
