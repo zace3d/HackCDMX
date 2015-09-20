@@ -2,6 +2,7 @@ package mx.citydevs.hackcdmx;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -15,11 +16,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import mx.citydevs.hackcdmx.adapters.OfficerListViewAdapter;
 import mx.citydevs.hackcdmx.beans.Officer;
+import mx.citydevs.hackcdmx.database.DBHelper;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
 import mx.citydevs.hackcdmx.httpconnection.HttpConnection;
 import mx.citydevs.hackcdmx.parser.GsonParser;
@@ -30,11 +33,15 @@ import mx.citydevs.hackcdmx.parser.GsonParser;
 public class OfficersActivity extends ActionBarActivity {
 
     private String TAG_CLASS = OfficersActivity.class.getSimpleName();
+    DBHelper BD = null;
+    SQLiteDatabase bd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officers);
+
+
 
         setSupportActionBar();
         getOfficersData();
@@ -87,8 +94,22 @@ public class OfficersActivity extends ActionBarActivity {
     }*/
 
     private void getOfficersData() {
-        GetOfficersPublicationsAsyncTask task =  new GetOfficersPublicationsAsyncTask();
-        task.execute();
+    String cops= null;
+        try {
+            BD = new DBHelper(OfficersActivity.this);
+             bd = BD.loadDataBase(OfficersActivity.this, BD);
+            cops =	BD.getPolicias(bd);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        if(cops != null){
+            Log.d("**************", "local");
+            llenaCops(cops);
+        }else{
+            Log.d("**************", "consulta");
+            GetOfficersPublicationsAsyncTask task =  new GetOfficersPublicationsAsyncTask();
+            task.execute();
+        }
     }
 
     private class GetOfficersPublicationsAsyncTask extends AsyncTask<String, String, String> {
@@ -114,7 +135,7 @@ public class OfficersActivity extends ActionBarActivity {
         @Override
         protected String doInBackground(String... params) {
             String result = HttpConnection.GET(HttpConnection.OFFICERS);
-            Log.d("**********",result);
+            BD.seCops(bd,result);
             return result;
         }
 
@@ -123,21 +144,26 @@ public class OfficersActivity extends ActionBarActivity {
             if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
             }
-
-            Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
-
             if (result != null) {
-                try {
-                    ArrayList<Officer> listOfficers = (ArrayList<Officer>) GsonParser.getOfficerListFromJSON(result);
-
-                    if (listOfficers != null) {
-                        Log.d("**********",listOfficers.size()+"");
-                        initUI(listOfficers);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                llenaCops(result);
             }
         }
+    }
+
+    /**
+     * llena el lista con array de policias
+     * @param result
+     */
+    public void llenaCops(String result){
+        try {
+            ArrayList<Officer> listOfficers = (ArrayList<Officer>) GsonParser.getOfficerListFromJSON(result);
+
+            if (listOfficers != null) {
+                initUI(listOfficers);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        BD.close();
     }
 }

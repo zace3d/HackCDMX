@@ -8,6 +8,7 @@
     <include
         android:id="@+id/actionbar"
         layout="@layout/actionbar"
+        android:background="@color/colorAppBlue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -17,30 +18,20 @@
         android:background="@color/colorAppBlue"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
-            android:src="@drawable/bg_top_internas"/>
-
         <EditText
             android:id="@+id/officers_et_officers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:ems="10"
             android:hint="@string/officers_name_input"
             android:text=""
+            android:background="@color/colorAppBlue"
             android:textColorHint="@color/colorAppGrey"
             android:textColor="@color/colorWhite"
             android:padding="16dp" />
     </LinearLayout>
-
-    <AutoCompleteTextView
-        android:id="@+id/officers_actv_places"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
 
     <ListView
         android:id="@+id/officers_lv"
