@@ -151,7 +151,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param placa
      * @return
      */
-    public boolean seCops(SQLiteDatabase bd,String placa){
+    public boolean setCops(SQLiteDatabase bd,String placa){
         Time now = new Time();
         now.setToNow();
         String date = Long.toString(now.toMillis(false));
@@ -192,6 +192,60 @@ public class DBHelper extends SQLiteOpenHelper {
         if(c!=null && c.getCount()>0){
             c.moveToFirst();
             json = c.getString(c.getColumnIndex("cops_json"));
+        }
+        c.close();
+        return json;
+    }
+
+
+
+    /**
+     * inserta en la BDLite la informacion de un viaje
+     * @param bd
+     * @param placa
+     * @return
+     */
+    public boolean setInfractions(SQLiteDatabase bd,String placa){
+        Time now = new Time();
+        now.setToNow();
+        String date = Long.toString(now.toMillis(false));
+        try{
+            if(deleteInfractions(bd)){
+                bd.execSQL("insert into infractions (infractions_json,infractions_date) values ('" + placa + "','" + date + "');");
+                Log.d("***********","Insertando infractions en base de datos");
+                return true;
+            }
+            Log.d("*****FALLA******","No se insertó infractions en base de datos");
+            return false;
+        }catch(Exception e){
+            Log.d("******FALLA****", "Insertando infractions en base de datos");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean deleteInfractions(SQLiteDatabase bd){
+        try{
+            bd.execSQL("delete from infractions");
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+
+    /**
+     * Regresa el Json de policias
+     * @param bd
+     * @return
+     */
+    public String getInfractions(SQLiteDatabase bd){
+        Cursor c = null;
+        String json = null;
+        c = bd.rawQuery("select * from infractions", null);
+        if(c!=null && c.getCount()>0){
+            c.moveToFirst();
+            json = c.getString(c.getColumnIndex("infractions_json"));
         }
         c.close();
         return json;

@@ -2,6 +2,7 @@ package mx.citydevs.hackcdmx;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -15,12 +16,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import mx.citydevs.hackcdmx.adapters.InfractionsListViewAdapter;
 import mx.citydevs.hackcdmx.adapters.OfficerListViewAdapter;
 import mx.citydevs.hackcdmx.beans.Infraction;
+import mx.citydevs.hackcdmx.beans.Officer;
+import mx.citydevs.hackcdmx.database.DBHelper;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
 import mx.citydevs.hackcdmx.httpconnection.HttpConnection;
 import mx.citydevs.hackcdmx.parser.GsonParser;
@@ -31,27 +35,36 @@ import mx.citydevs.hackcdmx.parser.GsonParser;
 public class InfractionsActivity extends ActionBarActivity {
 
     private String TAG_CLASS = InfractionsActivity.class.getSimpleName();
-
+    DBHelper BD = null;
+    SQLiteDatabase bd = null;
+    public static int LOCAL = 0;
+    public static int CONSULTA = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infractions);
 
         setSupportActionBar();
-        getInfractionsData();
+        getInfractionsData(LOCAL);
     }
 
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle("");
+        mToolbar.setTitle(getResources().getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorAppBlue));
         mToolbar.getBackground().setAlpha(255);
         mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
         actionbarIcon.setVisibility(View.GONE);
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText("");
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
-
+        actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
+        ImageView actionbar_reload = (ImageView)mToolbar.findViewById(R.id.actionbar_reload);
+        actionbar_reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getInfractionsData(CONSULTA);
+            }
+        });
         setSupportActionBar(mToolbar);
         getSupportActionBar().setElevation(5);
 
@@ -63,7 +76,7 @@ public class InfractionsActivity extends ActionBarActivity {
 
         ArrayList<Infraction> newList = new ArrayList();
         for (Infraction infraction : listOfficers) {
-            if (infraction.getInfraccion() != null)
+            if (infraction.getDescripcion() != null)
                 newList.add(infraction);
         }
 
@@ -86,9 +99,23 @@ public class InfractionsActivity extends ActionBarActivity {
         });
     }
 
-    private void getInfractionsData() {
-        GetInfractionsPublicationsAsyncTask task =  new GetInfractionsPublicationsAsyncTask();
-        task.execute();
+    private void getInfractionsData(int val) {
+        String infraction= null;
+        try {
+            BD = new DBHelper(InfractionsActivity.this);
+            bd = BD.loadDataBase(InfractionsActivity.this, BD);
+            infraction = BD.getInfractions(bd);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        if(infraction != null && val != CONSULTA){
+            Log.d("**************", "local");
+            llenaInfractions(infraction);
+        }else{
+            Log.d("**************", "consulta");
+            GetInfractionsPublicationsAsyncTask task =  new GetInfractionsPublicationsAsyncTask();
+            task.execute();
+        }
     }
 
     private class GetInfractionsPublicationsAsyncTask extends AsyncTask<String, String, String> {
@@ -113,7 +140,8 @@ public class InfractionsActivity extends ActionBarActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String result = HttpConnection.GET(HttpConnection.URL + HttpConnection.INFRACTIONS);
+            String result = HttpConnection.GET(HttpConnection.INFRACTIONS);
+            Log.d("*******",result);
             return result;
         }
 
@@ -122,20 +150,26 @@ public class InfractionsActivity extends ActionBarActivity {
             if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
             }
-
-            Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
-
             if (result != null) {
-                try {
-                    ArrayList<Infraction> listOfficers = (ArrayList<Infraction>) GsonParser.getInfractionsListFromJSON(result);
-
-                    if (listOfficers != null) {
-                        initUI(listOfficers);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                llenaInfractions(result);
             }
         }
+    }
+
+    /**
+     * llena el lista con array de policias
+     * @param result
+     */
+    public void llenaInfractions(String result){
+        try {
+            ArrayList<Infraction> listOfficers = (ArrayList<Infraction>) GsonParser.getInfractionsListFromJSON(result);
+
+            if (listOfficers != null) {
+                initUI(listOfficers);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        BD.close();
     }
 }

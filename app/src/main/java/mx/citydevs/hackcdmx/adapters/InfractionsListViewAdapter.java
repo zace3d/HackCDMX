@@ -73,10 +73,10 @@ public class InfractionsListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.infraction.setText(data.get(position).getInfraccion());
+        holder.infraction.setText(data.get(position).getDescripcion());
         // setColor(holder.infraction, data.get(position).getInfraccion(), regex, Color.GREEN);
 
-        holder.monto.setText(String.format(Locale.getDefault(), "Monto: $ %s", data.get(position).getMonto()));
+        holder.monto.setText(String.format(Locale.getDefault(), "Monto: $ %s", data.get(position).getDias_sansion()));
 
         holder.corralon.setText(String.format(Locale.getDefault(), "Amerita corralón: %s", data.get(position).getCorralon()));
 
@@ -104,8 +104,8 @@ public class InfractionsListViewAdapter extends BaseAdapter {
                 data.addAll(arraylist);
             } else {
                 for (Infraction infraction : arraylist) {
-                    if (infraction.getInfraccion() != null && infraction.getInfraccion() != null) {
-                        if (infraction.getInfraccion().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    if (infraction.getDescripcion() != null && infraction.getDescripcion() != null) {
+                        if (infraction.getDescripcion().toLowerCase(Locale.getDefault()).contains(charText)) {
                             data.add(infraction);
 
                             regex = charText;

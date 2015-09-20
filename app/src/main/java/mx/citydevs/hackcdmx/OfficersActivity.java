@@ -141,7 +141,7 @@ public class OfficersActivity extends ActionBarActivity {
         @Override
         protected String doInBackground(String... params) {
             String result = HttpConnection.GET(HttpConnection.OFFICERS);
-            BD.seCops(bd,result);
+            BD.setCops(bd,result);
             return result;
         }
 
