@@ -21,7 +21,35 @@
         app:typeface="Tw_Cen_MT_Bold"/>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
+        android:id="@+id/item_infractions_ley"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp"
+        android:gravity="left"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorAppGrey"
+        app:typeface="Tw_Cen_MT"/>
+
+    <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/item_infractions_monto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp"
+        android:gravity="left"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorAppGrey"
+        app:typeface="Tw_Cen_MT"/>
+
+    <mx.citydevs.hackcdmx.views.CustomTextView
+        android:id="@+id/item_infractions_puntos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
