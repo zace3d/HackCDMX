@@ -141,7 +141,7 @@ public class InfractionsActivity extends ActionBarActivity {
         @Override
         protected String doInBackground(String... params) {
             String result = HttpConnection.GET(HttpConnection.INFRACTIONS);
-            Log.d("*******",result);
+            BD.setInfractions(bd,result);
             return result;
         }
 
