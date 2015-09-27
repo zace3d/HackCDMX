@@ -123,7 +123,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/iv_acerca_de"
         android:paddingTop="5dp"
         android:src="@mipmap/ic_launcher_menu"
         android:layout_alignParentTop="true"

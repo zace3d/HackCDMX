@@ -33,4 +33,7 @@
     <string name="btn_infraction">Buscar infracción</string>
 
     <string name="main_menu">Menú</string>
+
+    <string name="text_acercade">Aplicación desarrollada por el colectivo ciudadano CityDevs. La idea original fue ganadora del HackCDMX 2015, el festival de datos de la Ciudad de México organizado por el Laboratorio para la Ciudad. Los datos utilizados son otorgados, creados y resguardados por la SSPDF para este proyecto.</string>
+    <string name="btn_aceptar">Aceptar</string>
 </resources>
