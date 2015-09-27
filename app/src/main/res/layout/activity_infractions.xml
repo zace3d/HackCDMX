@@ -29,8 +29,8 @@
             android:hint="@string/infractions_name_input"
             android:text=""
             android:background="@color/colorWhite"
-            android:textColorHint="@color/colorAppGrey"
-            android:textColor="@color/colorAppBlue"
+            android:textColorHint="@color/colorAppGreyLight"
+            android:textColor="@color/colorAppGrey"
             android:padding="10dp" />
     </LinearLayout>
     <View
