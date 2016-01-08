@@ -32,7 +32,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.iv_acerca_de).setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

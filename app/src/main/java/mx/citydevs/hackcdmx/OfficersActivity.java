@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -17,7 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 import mx.citydevs.hackcdmx.adapters.OfficerListViewAdapter;
@@ -26,6 +29,7 @@ import mx.citydevs.hackcdmx.database.DBHelper;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
 import mx.citydevs.hackcdmx.httpconnection.HttpConnection;
 import mx.citydevs.hackcdmx.parser.GsonParser;
+import mx.citydevs.hackcdmx.utils.Utils;
 
 /**
  * Created by zace3d on 3/7/15.
@@ -37,6 +41,7 @@ public class OfficersActivity extends ActionBarActivity {
     SQLiteDatabase bd = null;
     public static int LOCAL = 0;
     public static int CONSULTA = 1;
+    TextView officer_tv_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +62,18 @@ public class OfficersActivity extends ActionBarActivity {
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
         ImageView actionbar_reload = (ImageView)mToolbar.findViewById(R.id.actionbar_reload);
-        actionbar_reload.setOnClickListener(new View.OnClickListener(){
+        actionbar_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getOfficersData(CONSULTA);
             }
         });
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setElevation(5);
+        getSupportActionBar().setElevation(0);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ((TextView)findViewById(R.id.officer_tv_update)).setText(new Utils().getPreferences(OfficersActivity.this, "update_officers","Actualice porfavor"));
     }
 
     private void initUI(ArrayList<Officer> listOfficers) {
@@ -152,6 +159,12 @@ public class OfficersActivity extends ActionBarActivity {
             }
             if (result != null) {
                 llenaCops(result);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String currentDateandTime = sdf.format(new Date());
+
+                new Utils().setPreference(OfficersActivity.this,"update_officers",String.format("Última actualización: %s", currentDateandTime));
+
+                ((TextView)findViewById(R.id.officer_tv_update)).setText(String.format("Última actualización: %s", currentDateandTime));
             }
         }
     }
