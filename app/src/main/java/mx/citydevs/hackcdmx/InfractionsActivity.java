@@ -17,7 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 import mx.citydevs.hackcdmx.adapters.InfractionsListViewAdapter;
@@ -28,6 +30,7 @@ import mx.citydevs.hackcdmx.database.DBHelper;
 import mx.citydevs.hackcdmx.dialogues.Dialogues;
 import mx.citydevs.hackcdmx.httpconnection.HttpConnection;
 import mx.citydevs.hackcdmx.parser.GsonParser;
+import mx.citydevs.hackcdmx.utils.Utils;
 
 /**
  * Created by zace3d on 3/7/15.
@@ -66,9 +69,11 @@ public class InfractionsActivity extends ActionBarActivity {
             }
         });
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setElevation(5);
+        getSupportActionBar().setElevation(0);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ((TextView)findViewById(R.id.infraction_tv_update)).setText(new Utils().getPreferences(InfractionsActivity.this, "update_infraction", "Actualice porfavor"));
     }
 
     private void initUI(ArrayList<Infraction> listOfficers) {
@@ -152,6 +157,12 @@ public class InfractionsActivity extends ActionBarActivity {
             }
             if (result != null) {
                 llenaInfractions(result);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String currentDateandTime = sdf.format(new Date());
+
+                new Utils().setPreference(InfractionsActivity.this,"update_infraction",String.format("Última actualización: %s", currentDateandTime));
+
+                ((TextView)findViewById(R.id.infraction_tv_update)).setText(String.format("Última actualización: %s", currentDateandTime));
             }
         }
     }

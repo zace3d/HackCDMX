@@ -41,7 +41,6 @@ public class OfficersActivity extends ActionBarActivity {
     SQLiteDatabase bd = null;
     public static int LOCAL = 0;
     public static int CONSULTA = 1;
-    TextView officer_tv_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
