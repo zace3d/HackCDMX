@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -12,6 +14,7 @@ import android.text.TextWatcher;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,49 +37,64 @@ import mx.citydevs.hackcdmx.utils.Utils;
 /**
  * Created by zace3d on 3/7/15.
  */
-public class OfficersActivity extends ActionBarActivity {
+public class OfficersActivity extends ActionBarActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private String TAG_CLASS = OfficersActivity.class.getSimpleName();
     DBHelper BD = null;
     SQLiteDatabase bd = null;
     public static int LOCAL = 0;
     public static int CONSULTA = 1;
+    SwipeRefreshLayout swipe_container;
+    ListView lvOfficers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officers);
         setSupportActionBar();
+        setUpdateSwipeLayout();
         getOfficersData(LOCAL);
     }
+
+
 
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
         mToolbar.setTitle(getResources().getString(R.string.app_name));
         mToolbar.setTitleTextColor(getResources().getColor(R.color.colorAppBlue));
         mToolbar.getBackground().setAlpha(255);
+
         mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
         actionbarIcon.setVisibility(View.GONE);
+
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
         actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
+
         ImageView actionbar_reload = (ImageView)mToolbar.findViewById(R.id.actionbar_reload);
-        actionbar_reload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getOfficersData(CONSULTA);
-            }
-        });
+        actionbar_reload.setVisibility(View.GONE);
+
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setElevation(5);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ((TextView)findViewById(R.id.officer_tv_update)).setText(new Utils().getPreferences(OfficersActivity.this, "update_officers","Actualice porfavor"));
+
+    }
+
+    public void setUpdateSwipeLayout(){
+        swipe_container = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        swipe_container.setOnRefreshListener(this);
+        swipe_container.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+        ((TextView)findViewById(R.id.infoText)).setText(new Utils().getPreferences(OfficersActivity.this, "update_officers", "Para actualizar baje la lista"));
     }
 
     private void initUI(ArrayList<Officer> listOfficers) {
-        ListView lvOfficers = (ListView) findViewById(R.id.officers_lv);
+        lvOfficers = (ListView) findViewById(R.id.officers_lv);
 
         ArrayList<Officer> newList = new ArrayList();
         for (Officer officer : listOfficers) {
@@ -101,6 +119,22 @@ public class OfficersActivity extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
+
+        lvOfficers.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int topRowVerticalPosition =
+                        (lvOfficers == null || lvOfficers.getChildCount() == 0) ?
+                                0 : lvOfficers.getChildAt(0).getTop();
+                swipe_container.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0);
             }
         });
     }
@@ -158,12 +192,11 @@ public class OfficersActivity extends ActionBarActivity {
             }
             if (result != null) {
                 llenaCops(result);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
                 String currentDateandTime = sdf.format(new Date());
 
-                new Utils().setPreference(OfficersActivity.this,"update_officers",String.format("Última actualización: %s", currentDateandTime));
-
-                ((TextView)findViewById(R.id.officer_tv_update)).setText(String.format("Última actualización: %s", currentDateandTime));
+                new Utils().setPreference(OfficersActivity.this,"update_officers",String.format("Actualizado: %s", currentDateandTime));
+                ((TextView)findViewById(R.id.infoText)).setText(String.format("Actualizado: %s", currentDateandTime));
             }
         }
     }
@@ -179,9 +212,16 @@ public class OfficersActivity extends ActionBarActivity {
             if (listOfficers != null) {
                 initUI(listOfficers);
             }
+            swipe_container.setRefreshing(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
         BD.close();
+    }
+
+
+    @Override
+    public void onRefresh() {
+        getOfficersData(CONSULTA);
     }
 }

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorAppGreyBgr"
     android:orientation="vertical">
-
     <include
         android:id="@+id/actionbar"
         layout="@layout/actionbar"
@@ -12,21 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingRight="5dp"
-        android:paddingBottom="2dp"
-        android:gravity="right"
-        android:text="Actualice porfavor"
-        android:textColor="@color/colorAppBlue"
-        android:background="@color/colorWhite"
-        android:id="@+id/officer_tv_update"
-        android:layout_gravity="center_horizontal" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorAppGrey"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,26 +21,61 @@
             android:id="@+id/officers_et_officers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:ems="10"
+            android:singleLine="true"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:hint="@string/officers_name_input"
-            android:text=""
             android:background="@color/colorWhite"
             android:textColorHint="@color/colorAppGreyLight"
             android:textColor="@color/colorAppGrey"
-            android:padding="10dp" />
+            android:padding="5dp"
+            android:textSize="@dimen/abc_text_size_small_material"/>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/colorAppBlue"/>
 
-    <ListView
-        android:id="@+id/officers_lv"
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:descendantFocusability="afterDescendants"
-        android:fadingEdge="none" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".95"
+                android:drawSelectorOnTop="true"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"
+                android:id="@+id/officers_lv"
+                android:descendantFocusability="afterDescendants"
+                android:fadingEdge="none"/>
+
+            <TextView
+                android:id="@+id/infoText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".05"
+                android:background="@color/colorWhite"
+                android:layout_gravity="center|center_vertical"
+                android:gravity="center|center_vertical"
+                android:text="Pull Down to Refresh" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
