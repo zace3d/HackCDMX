@@ -28,7 +28,7 @@
 
             <ImageView
                 android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_height="110dp"
                 android:src="@mipmap/ic_launcher_gorra"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
@@ -41,9 +41,9 @@
                 android:text="@string/title_officer"
                 android:textColor="@color/colorWhite"
                 android:layout_gravity="center_horizontal"
-                android:textSize="20sp"
+                android:textSize="@dimen/abc_text_size_title_material"
                 app:typeface="Tw_Cen_MT_Bold"
-                android:paddingBottom="5dp"/>
+                android:paddingBottom="0dp"/>
 
             <mx.citydevs.hackcdmx.views.CustomTextView
                 android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                 android:text="@string/subtitle_officer"
                 android:textColor="@color/colorWhite"
                 android:layout_gravity="center_horizontal"
-                android:textSize="18sp"
+                android:textSize="@dimen/abc_text_size_small_material"
                 app:typeface="Tw_Cen_MT"
                 android:paddingBottom="5dp"/>
 
@@ -65,6 +65,7 @@
                 android:textStyle="bold"
                 android:textColor="@drawable/selector_text"
                 android:background="@drawable/selector_button"
+                android:textSize="@dimen/abc_text_size_button_material"
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
@@ -76,7 +77,7 @@
 
             <ImageView
                 android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_height="110dp"
                 android:src="@mipmap/ic_launcher_libreta"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
@@ -88,10 +89,10 @@
                 android:text="@string/title_infraction"
                 android:textColor="@color/colorWhite"
                 android:layout_gravity="center_horizontal"
-                android:textSize="20sp"
+                android:textSize="@dimen/abc_text_size_title_material"
                 app:typeface="Tw_Cen_MT_Bold"
-                android:paddingBottom="5dp"
-                android:paddingTop="12dp"/>
+                android:paddingBottom="0dp"
+                android:paddingTop="5dp"/>
 
             <mx.citydevs.hackcdmx.views.CustomTextView
                 android:layout_width="wrap_content"
@@ -99,7 +100,7 @@
                 android:text="@string/subtitle_infraction"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorWhite"
-                android:textSize="18sp"
+                android:textSize="@dimen/abc_text_size_small_material"
                 app:typeface="Tw_Cen_MT"
                 android:paddingBottom="5dp"/>
 
@@ -111,6 +112,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textStyle="bold"
+                android:textSize="@dimen/abc_text_size_button_material"
                 android:textColor="@drawable/selector_text"
                 android:background="@drawable/selector_button"
                 android:layout_gravity="center_horizontal" />
