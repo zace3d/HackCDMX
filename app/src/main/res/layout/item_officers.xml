@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="0dp"
         android:paddingTop="5dp"
         android:gravity="left"
         android:text=""
@@ -37,10 +37,14 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="5dp"
+        android:paddingTop="0dp"
         android:gravity="left"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/colorAppGrey"
         app:typeface="Tw_Cen_MT"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAppGrey"/>
 </LinearLayout>
