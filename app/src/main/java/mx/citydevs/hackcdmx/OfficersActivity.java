@@ -212,11 +212,11 @@ public class OfficersActivity extends ActionBarActivity implements SwipeRefreshL
             if (listOfficers != null) {
                 initUI(listOfficers);
             }
-            swipe_container.setRefreshing(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
         BD.close();
+        swipe_container.setRefreshing(false);
     }
 
 
