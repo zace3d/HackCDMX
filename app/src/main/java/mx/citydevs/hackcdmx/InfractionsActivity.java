@@ -45,7 +45,7 @@ public class InfractionsActivity extends ActionBarActivity implements SwipeRefre
     public static int LOCAL = 0;
     public static int CONSULTA = 1;
     SwipeRefreshLayout swipe_container;
-    ListView lvOfficers;
+    ListView lvInfractions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +91,7 @@ public class InfractionsActivity extends ActionBarActivity implements SwipeRefre
 
 
     private void initUI(ArrayList<Infraction> listOfficers) {
-        ListView lvInfractions = (ListView) findViewById(R.id.infractions_lv);
+         lvInfractions = (ListView) findViewById(R.id.infractions_lv);
 
         ArrayList<Infraction> newList = new ArrayList();
         for (Infraction infraction : listOfficers) {
@@ -117,7 +117,7 @@ public class InfractionsActivity extends ActionBarActivity implements SwipeRefre
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
-        lvOfficers.setOnScrollListener(new AbsListView.OnScrollListener() {
+        lvInfractions.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 
@@ -126,8 +126,8 @@ public class InfractionsActivity extends ActionBarActivity implements SwipeRefre
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int topRowVerticalPosition =
-                        (lvOfficers == null || lvOfficers.getChildCount() == 0) ?
-                                0 : lvOfficers.getChildAt(0).getTop();
+                        (lvInfractions == null || lvInfractions.getChildCount() == 0) ?
+                                0 : lvInfractions.getChildAt(0).getTop();
                 swipe_container.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0);
             }
         });
