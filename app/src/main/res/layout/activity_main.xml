@@ -29,21 +29,13 @@
             <ImageView
                 android:layout_width="130dp"
                 android:layout_height="110dp"
-                android:src="@mipmap/ic_launcher_gorra"
+                android:src="@drawable/agente"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
                 android:gravity="bottom"
-                />
+                android:contentDescription="oficial" />
 
-            <mx.citydevs.hackcdmx.views.CustomTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_officer"
-                android:textColor="@color/colorWhite"
-                android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/abc_text_size_title_material"
-                app:typeface="Tw_Cen_MT_Bold"
-                android:paddingBottom="0dp"/>
+
 
             <mx.citydevs.hackcdmx.views.CustomTextView
                 android:layout_width="wrap_content"
@@ -78,21 +70,12 @@
             <ImageView
                 android:layout_width="130dp"
                 android:layout_height="110dp"
-                android:src="@mipmap/ic_launcher_libreta"
+                android:src="@drawable/infraccion"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
-                android:gravity="bottom"/>
+                android:gravity="bottom"
+                android:contentDescription="@string/app_name" />
 
-            <mx.citydevs.hackcdmx.views.CustomTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_infraction"
-                android:textColor="@color/colorWhite"
-                android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/abc_text_size_title_material"
-                app:typeface="Tw_Cen_MT_Bold"
-                android:paddingBottom="0dp"
-                android:paddingTop="5dp"/>
 
             <mx.citydevs.hackcdmx.views.CustomTextView
                 android:layout_width="wrap_content"

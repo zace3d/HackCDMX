@@ -29,11 +29,12 @@
     <string name="btn_officer">Buscar agente</string>
 
     <string name="title_infraction">Consulta tu infracción</string>
-    <string name="subtitle_infraction">Consulta la multa que debes pagar por la infracción que acabas de cometer.</string>
+    <string name="subtitle_infraction">Consulta el monto que debes pagar por la infracción que cometiste.</string>
     <string name="btn_infraction">Buscar infracción</string>
 
     <string name="main_menu">Menú</string>
 
     <string name="text_acercade">Aplicación desarrollada por el colectivo ciudadano CityDevs. La idea original fue ganadora del HackCDMX 2015, el festival de datos de la Ciudad de México organizado por el Laboratorio para la Ciudad. Los datos utilizados son otorgados, creados y resguardados por la SSPDF para este proyecto.</string>
     <string name="btn_aceptar">Aceptar</string>
+    <string name="libreta">libreta</string>
 </resources>
