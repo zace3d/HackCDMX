@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.viewpagerindicator.CirclePageIndicator;
+
 public class TutorialActivity extends ActionBarActivity {
 
     /**
@@ -48,6 +50,10 @@ public class TutorialActivity extends ActionBarActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        CirclePageIndicator titleIndicator = (CirclePageIndicator) findViewById(R.id.rank_pager_indicator);
+        titleIndicator.setViewPager(mViewPager);
+        titleIndicator.setOnPageChangeListener(null);
 
     }
 
@@ -93,28 +99,21 @@ public class TutorialActivity extends ActionBarActivity {
                 return PlaceholderFragment2.newInstance(position+2);
             }else if(position==2){
                 return PlaceholderFragment3.newInstance(position+3);
-            }else if(position==3){
-                return PlaceholderFragment4.newInstance(position+4);
-            }
+            }else if(position==3) {
+                return PlaceholderFragment4.newInstance(position + 4);
+            }else if(position==4){
+                    return PlaceholderFragment5.newInstance(position+5);
+                }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return 5;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-            }
             return null;
         }
     }
@@ -201,6 +200,27 @@ public class TutorialActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             View  rootView= inflater.inflate(R.layout.fragment_tutorial4, container, false);
+
+            return rootView;
+        }
+    }
+
+    public static class PlaceholderFragment5 extends Fragment {
+        private static final String ARG_SECTION_NUMBER = "section_number";
+        public static PlaceholderFragment5 newInstance(int sectionNumber) {
+            PlaceholderFragment5 fragment = new PlaceholderFragment5();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        public PlaceholderFragment5() { }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+            View  rootView= inflater.inflate(R.layout.fragment_tutorial5, container, false);
 
             return rootView;
         }

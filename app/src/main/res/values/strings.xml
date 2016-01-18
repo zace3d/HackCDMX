@@ -39,13 +39,7 @@
     <string name="libreta">libreta</string>
     <string name="title_activity_tutorial">tutorial</string>
 
-    <string name="title_section1">Sección 1</string>
-    <string name="title_section2">Sección 2</string>
-    <string name="title_section3">Sección 3</string>
-    <string name="title_section4">Sección 3</string>
-
-
-    <string name="txt_section1">En la ciudad de México sólo los agentes de tránsito habilitados con un handheld pueden infraccionarte</string>
+    <string name="txt_section1">En la ciudad de México sólo los agentes de tránsito habilitados con un handheld pueden infraccionarte.</string>
     <string name="txt_section2">Si un agente de tránsito te detiene, puedes consultar su nombre y número de placa y saber si tiene la facultad para infraccionarte.</string>
     <string name="txt_section3">Si cometiste una infracción evalúa el proceso que el agente siguió en base al artículo 59 del Reglamento de Tránsito Metropolitano.</string>
     <string name="txt_section4">Consulta el monto total y las sanciones que aplican por la infracción que cometiste.</string>

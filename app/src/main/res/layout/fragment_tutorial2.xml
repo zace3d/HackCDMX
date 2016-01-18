@@ -11,10 +11,7 @@
     <TextView android:id="@+id/section_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textSize="@dimen/abc_text_size_title_material"
-        android:textColor="@color/colorAppYellow"/>
+        android:gravity="center" />
 
     <FrameLayout
         android:layout_width="match_parent"
