@@ -43,6 +43,8 @@ public class InfractionsListViewAdapter extends BaseAdapter {
         CustomTextView infraction;
         CustomTextView monto;
         CustomTextView corralon;
+        CustomTextView puntos;
+        CustomTextView ley;
     }
 
     @Override
@@ -67,16 +69,21 @@ public class InfractionsListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.item_infractions, null);
             holder.infraction = (CustomTextView) view.findViewById(R.id.item_infractions_nombre);
             holder.monto = (CustomTextView) view.findViewById(R.id.item_infractions_monto);
+            holder.puntos = (CustomTextView) view.findViewById(R.id.item_infractions_puntos);
             holder.corralon = (CustomTextView) view.findViewById(R.id.item_infractions_corralon);
+            holder.ley = (CustomTextView) view.findViewById(R.id.item_infractions_ley);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.infraction.setText(data.get(position).getInfraccion());
-        // setColor(holder.infraction, data.get(position).getInfraccion(), regex, Color.GREEN);
+        holder.infraction.setText(data.get(position).getDescripcion());
 
-        holder.monto.setText(String.format(Locale.getDefault(), "Monto: $ %s", data.get(position).getMonto()));
+        holder.monto.setText(String.format(Locale.getDefault(), "Monto: $ %s", Double.parseDouble(data.get(position).getDias_sansion()) * 69.95));
+
+        holder.ley.setText(String.format(Locale.getDefault(), "%s %s %s %s", data.get(position).getArticulo(),data.get(position).getFraccion(),data.get(position).getParrafo(),data.get(position).getInciso()));
+
+        holder.puntos.setText(String.format(Locale.getDefault(), "Puntos: %s", data.get(position).getPuntos()));
 
         holder.corralon.setText(String.format(Locale.getDefault(), "Amerita corralón: %s", data.get(position).getCorralon()));
 
@@ -104,8 +111,8 @@ public class InfractionsListViewAdapter extends BaseAdapter {
                 data.addAll(arraylist);
             } else {
                 for (Infraction infraction : arraylist) {
-                    if (infraction.getInfraccion() != null && infraction.getInfraccion() != null) {
-                        if (infraction.getInfraccion().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    if (infraction.getDescripcion() != null && infraction.getDescripcion() != null) {
+                        if (infraction.getDescripcion().toLowerCase(Locale.getDefault()).contains(charText)) {
                             data.add(infraction);
 
                             regex = charText;

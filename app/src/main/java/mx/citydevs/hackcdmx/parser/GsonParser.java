@@ -24,7 +24,6 @@ public class GsonParser {
 
     public static List<Officer> getOfficerListFromJSON(String json) {
         Gson gson = new Gson();
-
         Type listType = new TypeToken<List<Officer>>(){}.getType();
         List<Officer> listOfficers = gson.fromJson(json, listType);
 

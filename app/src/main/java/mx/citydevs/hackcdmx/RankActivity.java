@@ -1,13 +1,17 @@
 package mx.citydevs.hackcdmx;
 
 import android.app.ProgressDialog;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +29,7 @@ import mx.citydevs.hackcdmx.views.CustomViewPager;
 /**
  * Created by zace3d on 3/7/15.
  */
-public class RankActivity extends ActionBarActivity {
+public class RankActivity extends FragmentActivity {
 
     private String TAG_CLASS = RankActivity.class.getSimpleName();
 
@@ -40,25 +44,24 @@ public class RankActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
 
-        setSupportActionBar();
+
+        setSize();
         initUI();
     }
 
-    protected void setSupportActionBar() {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle("");
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-        mToolbar.getBackground().setAlpha(255);
-        ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
-        actionbarIcon.setVisibility(View.GONE);
-        TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText("");
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+    private void setSize() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
 
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setElevation(5);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        WindowManager.LayoutParams params = getWindow().getAttributes();
+        params.x = -20;
+        params.height = height/2;
+        params.width = width;
+        params.y = -10;
+        this.getWindow().setAttributes(params);
     }
 
     private void initUI() {
@@ -122,7 +125,7 @@ public class RankActivity extends ActionBarActivity {
             dialog = new ProgressDialog(RankActivity.this);
             dialog.setMessage(getResources().getString(R.string.postrank_loading));
             dialog.setCanceledOnTouchOutside(false);
-            dialog.setCancelable(false);
+            dialog.setCancelable(true);
             dialog.show();
         }
 

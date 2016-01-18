@@ -20,7 +20,7 @@
          You can also set colorControlNormal, colorControlActivated
          colorControlHighlight, and colorSwitchThumbNormal.
         -->
-        <item name="colorControlNormal">@color/colorAppBlue</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
         <item name="colorControlActivated">@color/colorAppYellow</item>
         <item name="colorControlHighlight">@color/colorAppYellow</item>
         <item name="colorSwitchThumbNormal">@color/colorAppYellow</item>
@@ -30,8 +30,8 @@
     </style>
 
     <style name="CustomCirclePageIndicator">
-        <item name="fillColor">@color/colorAppBlue</item>
-        <item name="strokeColor">@color/colorAppBlue</item>
+        <item name="fillColor">@color/colorWhite</item>
+        <item name="strokeColor">@color/colorWhite</item>
         <item name="strokeWidth">1dp</item>
         <item name="radius">5dp</item>
         <item name="centered">true</item>

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/selector_btn">
+    android:background="@color/colorWhite">
 
     <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/item_officers_word"
@@ -23,12 +23,12 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="0dp"
         android:paddingTop="5dp"
         android:gravity="left"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorAppBlue"
+        android:textColor="@color/colorBlack"
         app:typeface="Tw_Cen_MT_Bold"/>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
@@ -37,10 +37,14 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="5dp"
+        android:paddingTop="0dp"
         android:gravity="left"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/colorAppBlue"
+        android:textColor="@color/colorAppGrey"
         app:typeface="Tw_Cen_MT"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAppGrey"/>
 </LinearLayout>

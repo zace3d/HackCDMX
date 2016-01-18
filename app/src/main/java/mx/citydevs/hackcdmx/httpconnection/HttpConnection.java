@@ -21,10 +21,10 @@ public class HttpConnection {
 	public static final String TAG_CLASS = HttpConnection.class.getName();
 	
 	public static final String URL = "http://infracciones.herokuapp.com/";
-    public static final String OFFICERS = "cops.json";
-    public static final String INFRACTIONS = "concepts.json";
+    public static final String OFFICERS = "http://201.144.220.174/infracciones/api/personal/acreditado";
+    public static final String INFRACTIONS = "http://201.144.220.174/infracciones/api/articulos/articulo_vigente";
 
-    public static final String RANK = "/cops/new?identification=%s&infraccion=%s&articulo=%s&coincidio=%s&documents=%s&copy=%s&latitude=19.4394829&longitude=-99.1823385&cop_id=830625";
+    public static final String RANK = "cops/new?identification=%s&infraccion=%s&articulo=%s&coincidio=%s&documents=%s&copy=%s&latitude=19.4394829&longitude=-99.1823385&cop_id=830625";
 
 	public static String GET(String url) {
 		HttpClient client = new DefaultHttpClient();

@@ -33,14 +33,22 @@ public class OfficerResultActivity extends ActionBarActivity implements View.OnC
 
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle("");
+        mToolbar.setTitle(getResources().getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorAppBlue));
         mToolbar.getBackground().setAlpha(255);
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
         actionbarIcon.setVisibility(View.GONE);
+        actionbarIcon.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setText("");
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
-
+        actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
+        ImageView actionbar_reload = (ImageView)mToolbar.findViewById(R.id.actionbar_reload);
+        actionbar_reload.setVisibility(View.GONE);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setElevation(5);
 

@@ -6,25 +6,16 @@ import java.io.Serializable;
  * Created by zace3d on 3/7/15.
  */
 public class Officer implements Serializable {
-    private String id;
-    private String nombre;
+    private String nombre_completo;
     private String placa;
-    private String url;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private String id_tipo_policia;
 
     public String getNombre() {
-        return nombre;
+        return nombre_completo;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre_completo = nombre;
     }
 
     public String getPlaca() {
@@ -35,11 +26,11 @@ public class Officer implements Serializable {
         this.placa = placa;
     }
 
-    public String getUrl() {
-        return url;
+    public String getTipo() {
+        return id_tipo_policia;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setTipo(String url) {
+        this.id_tipo_policia = id_tipo_policia;
     }
 }

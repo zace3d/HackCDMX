@@ -4,10 +4,24 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAppGreyBgr">
+    android:background="@color/colorWhite">
 
     <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/item_infractions_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:gravity="left"
+        android:textSize="@dimen/abc_text_size_small_material"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        app:typeface="Tw_Cen_MT_Bold"/>
+
+    <mx.citydevs.hackcdmx.views.CustomTextView
+        android:id="@+id/item_infractions_ley"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
@@ -16,9 +30,9 @@
         android:paddingTop="5dp"
         android:gravity="left"
         android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorAppBlue"
-        app:typeface="Tw_Cen_MT_Bold"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorAppGrey"
+        app:typeface="Tw_Cen_MT"/>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
         android:id="@+id/item_infractions_monto"
@@ -31,7 +45,21 @@
         android:gravity="left"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorAppBlue"
+        android:textColor="@color/colorAppGrey"
+        app:typeface="Tw_Cen_MT"/>
+
+    <mx.citydevs.hackcdmx.views.CustomTextView
+        android:id="@+id/item_infractions_puntos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp"
+        android:gravity="left"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorAppGrey"
         app:typeface="Tw_Cen_MT"/>
 
     <mx.citydevs.hackcdmx.views.CustomTextView
@@ -45,6 +73,10 @@
         android:gravity="left"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorAppBlue"
+        android:textColor="@color/colorAppGrey"
         app:typeface="Tw_Cen_MT"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAppGrey"/>
 </LinearLayout>
