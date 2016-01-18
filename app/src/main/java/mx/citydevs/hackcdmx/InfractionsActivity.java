@@ -49,7 +49,7 @@ public class InfractionsActivity extends ActionBarActivity implements SwipeRefre
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_infractions);
+        setContentView(R.layout.activity_infraction);
 
         setSupportActionBar();
         setUpdateSwipeLayout();
@@ -58,10 +58,10 @@ public class InfractionsActivity extends ActionBarActivity implements SwipeRefre
 
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle(getResources().getString(R.string.app_name));
-        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorAppBlue));
+        mToolbar.setTitle("");
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         mToolbar.getBackground().setAlpha(255);
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorAppBlue));
 
         ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
         actionbarIcon.setVisibility(View.GONE);
