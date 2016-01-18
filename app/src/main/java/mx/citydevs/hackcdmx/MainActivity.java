@@ -36,7 +36,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_acerca_de:
-                mostrarAercaDe().show();
+               // mostrarAercaDe().show();
+                startTutorialIntent();
                 break;
             case R.id.main_btn_officer:
                 startOfficersIntent();
@@ -55,6 +56,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private void startInfractionsIntent() {
         Intent intent = new Intent(getBaseContext(), InfractionsActivity.class);
+        startActivity(intent);
+    }
+
+    private void startTutorialIntent() {
+        Intent intent = new Intent(getBaseContext(), TutorialActivity.class);
         startActivity(intent);
     }
 
