@@ -87,7 +87,7 @@ public class OfficerListViewAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, OfficerResultActivity.class);
                 intent.putExtra("officer", officer);
-                mContext.startActivity(intent);
+                //mContext.startActivity(intent);
             }
         });
 
