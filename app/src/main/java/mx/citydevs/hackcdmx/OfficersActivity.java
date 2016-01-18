@@ -50,7 +50,7 @@ public class OfficersActivity extends ActionBarActivity implements SwipeRefreshL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_officers);
+        setContentView(R.layout.activity_officer);
         setSupportActionBar();
         setUpdateSwipeLayout();
         getOfficersData(LOCAL);
@@ -60,16 +60,18 @@ public class OfficersActivity extends ActionBarActivity implements SwipeRefreshL
 
     protected void setSupportActionBar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.actionbar);
-        mToolbar.setTitle(getResources().getString(R.string.app_name));
-        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorAppBlue));
+        mToolbar.setTitle("");
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         mToolbar.getBackground().setAlpha(255);
 
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorAppBlue));
+
         ImageView actionbarIcon = (ImageView) mToolbar.findViewById(R.id.actionbar_icon);
         actionbarIcon.setVisibility(View.GONE);
 
         TextView actionbarTitle = (TextView) mToolbar.findViewById(R.id.actionbar_title);
-        actionbarTitle.setTextColor(getResources().getColor(R.color.colorAppBlue));
+        actionbarTitle.setTextColor(getResources().getColor(R.color.colorWhite));
 
         ImageView actionbar_reload = (ImageView)mToolbar.findViewById(R.id.actionbar_reload);
         actionbar_reload.setVisibility(View.GONE);
