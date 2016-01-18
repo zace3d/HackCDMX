@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class TutorialActivity extends ActionBarActivity {
+public class TutorialActivity extends ActionBarActivity  {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -31,7 +32,7 @@ public class TutorialActivity extends ActionBarActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
-
+    public  TextView btn_next;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -51,10 +52,51 @@ public class TutorialActivity extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                if (position < 4) {
+                    btn_next.setText("SIGUIENTE");
+                } else {
+                    btn_next.setText("SALIR");
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+
+
+        btn_next = (TextView)findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(getItem(0)<4){
+                    mViewPager.setCurrentItem(getItem(+1), true);
+                }else {
+                    finish();
+                }
+
+            }
+        });
+
         CirclePageIndicator titleIndicator = (CirclePageIndicator) findViewById(R.id.rank_pager_indicator);
         titleIndicator.setViewPager(mViewPager);
         titleIndicator.setOnPageChangeListener(null);
 
+    }
+
+    private int getItem(int i) {
+        return mViewPager.getCurrentItem() + i;
     }
 
 
@@ -79,6 +121,7 @@ public class TutorialActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
     /**
@@ -158,7 +201,6 @@ public class TutorialActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             View  rootView= inflater.inflate(R.layout.fragment_tutorial2, container, false);
-
             return rootView;
         }
     }
@@ -179,7 +221,6 @@ public class TutorialActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             View  rootView= inflater.inflate(R.layout.fragment_tutorial3, container, false);
-
             return rootView;
         }
     }
@@ -200,7 +241,6 @@ public class TutorialActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             View  rootView= inflater.inflate(R.layout.fragment_tutorial4, container, false);
-
             return rootView;
         }
     }
@@ -221,7 +261,6 @@ public class TutorialActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             View  rootView= inflater.inflate(R.layout.fragment_tutorial5, container, false);
-
             return rootView;
         }
     }
